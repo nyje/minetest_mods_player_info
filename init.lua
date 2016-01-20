@@ -40,10 +40,12 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 	end
 end)
 
+minetest.register_privilege("playerinfo", { description = "Allows player to use the /players command ;-)" })
+
 minetest.register_chatcommand("players", {
 	params = "",
 	description = "show connected player information",
-	privs = {},
+	privs = {"playerinfo"},
 	func = function(name, param)
 		if minetest.is_singleplayer() then
 			minetest.chat_send_player(name, "This command only works in multiplayer.")
